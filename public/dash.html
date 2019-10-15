@@ -75,7 +75,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary btn-raised" onclick="addFood()">Save changes
+                            <button type="button" class="btn btn-primary btn-raised" onclick="addFood(,,true)">Save changes
                             </button>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                     let existList = response.val();
                     if(existList != null){
                         for(let j = 0; j < existList.length; j++){
-                            addFood(existList[j]['food-name'], existList[j]['food-exp-date']);
+                            addFood(existList[j]['food-name'], existList[j]['food-exp-date'], false);
                         }
                     }
                 });
@@ -145,13 +145,14 @@
 </script>
 <script>
 
-    function addFood(foodName = document.getElementById('food-name').value, foodExpDate = document.getElementById('food-exp-date').value) {
+    function addFood(foodName = document.getElementById('food-name').value, foodExpDate = document.getElementById('food-exp-date').value, push_check) {
         let table = document.getElementById('food-table');
         let newFood = table.insertRow();
         newFood.insertCell(0).innerText = foodName;
         newFood.insertCell(1).innerText = foodExpDate;
         document.getElementById('modal-close-btn').click();
-        database.ref('/users/' + current_user.uid).once('value').then((response) => {
+        if(push_check == true){
+		database.ref('/users/' + current_user.uid).once('value').then((response) => {
             let existList = response.val();
             if(existList == null){
                 existList = [];
@@ -162,6 +163,7 @@
             });
             database.ref('/users/' + current_user.uid).set(existList);
         })
+	}
     }
 </script>
 
