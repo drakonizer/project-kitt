@@ -75,7 +75,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary btn-raised" onclick="addFood(,,true)">Save changes
+                            <button type="button" class="btn btn-primary btn-raised" onclick="addFood()">Save changes
                             </button>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
 </script>
 <script>
 
-    function addFood(foodName = document.getElementById('food-name').value, foodExpDate = document.getElementById('food-exp-date').value, push_check) {
+    function addFood(foodName = document.getElementById('food-name').value, foodExpDate = document.getElementById('food-exp-date').value, push_check = true) {
         let table = document.getElementById('food-table');
         let newFood = table.insertRow();
         newFood.insertCell(0).innerText = foodName;
