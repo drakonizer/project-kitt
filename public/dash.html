@@ -127,11 +127,11 @@
             var providerData = user.providerData;
             document.getElementById('user_info').innerText = `Current User: ${displayName} <${email}>`;
             current_user = user;
-            if(current_user != null){
+            if (current_user != null) {
                 database.ref('/users/' + current_user.uid).once('value').then((response) => {
                     let existList = response.val();
-                    if(existList != null){
-                        for(let j = 0; j < existList.length; j++){
+                    if (existList != null) {
+                        for (let j = 0; j < existList.length; j++) {
                             addFood(existList[j]['food-name'], existList[j]['food-exp-date'], false);
                         }
                     }
@@ -151,19 +151,19 @@
         newFood.insertCell(0).innerText = foodName;
         newFood.insertCell(1).innerText = foodExpDate;
         document.getElementById('modal-close-btn').click();
-        if(push_check == true){
-		database.ref('/users/' + current_user.uid).once('value').then((response) => {
-            let existList = response.val();
-            if(existList == null){
-                existList = [];
-            }
-            existList.push({
-                'food-name': foodName,
-                'food-exp-date': foodExpDate
-            });
-            database.ref('/users/' + current_user.uid).set(existList);
-        })
-	}
+        if (push_check == true) {
+            database.ref('/users/' + current_user.uid).once('value').then((response) => {
+                let existList = response.val();
+                if (existList == null) {
+                    existList = [];
+                }
+                existList.push({
+                    'food-name': foodName,
+                    'food-exp-date': foodExpDate
+                });
+                database.ref('/users/' + current_user.uid).set(existList);
+            })
+        }
     }
 </script>
 
