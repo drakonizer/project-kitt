@@ -10,12 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/welcome_bg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/welcome" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="200dp"
                 android:gravity="center_horizontal"
-                android:textColor="@android:color/primary_text_dark_nodisable"
+                android:textColor="@android:color/primary_text_light_nodisable"
                 android:text="KITT"
                 android:textSize="36sp" />
             <TextView
@@ -36,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textColor="@android:color/secondary_text_dark"
+                android:textColor="@android:color/secondary_text_light"
                 android:text="Never let food expire again"
                 android:textSize="18sp" />
             <RelativeLayout
